@@ -13,7 +13,12 @@ export default function Cart(props) {
             Your cart is empty
           </h1>
           <div className="flex justify-center">
-          <Link to='/shop' className="bg-blue-500 text-white px-6 py-3 rounded-lg inline-block hover:bg-blue-600 font-bold">Continue Shopping</Link>
+            <Link
+              to="/shop"
+              className="bg-blue-500 text-white px-6 py-3 rounded-lg inline-block hover:bg-blue-600 font-bold"
+            >
+              Continue Shopping
+            </Link>
           </div>
         </>
       ) : (
