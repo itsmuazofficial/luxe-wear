@@ -10,8 +10,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 function App() {
   const savedCart = JSON.parse(localStorage.getItem("cart"));
-   const validCart = Array.isArray(savedCart) ?  savedCart:[]
-  console.log(JSON.parse(localStorage.getItem("cart")));
+   const validCart = Array.isArray(savedCart) ?  savedCart:[];
   const [cart, setCart] = useState(validCart);
 
   //    Add to Cart function 
