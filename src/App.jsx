@@ -4,12 +4,15 @@ import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import FeaturedProducts from "./components/FeaturedProducts";
 import { Routes, Route } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import Categories from "./components/Categories";
 import About from "./components/About";
 import Contact from "./components/Contact";
 function App() {
-  const [cart, setCart] = useState([]);
+  const savedCart = JSON.parse(localStorage.getItem("cart"));
+   const validCart = Array.isArray(savedCart) ?  savedCart:[]
+  console.log(JSON.parse(localStorage.getItem("cart")));
+  const [cart, setCart] = useState(validCart);
 
   //    Add to Cart function 
 
@@ -18,7 +21,7 @@ function App() {
      return product.name === item.name
     })
     if(alreadyAdded){
-      alert('This item is already added')
+    
       return
     }
     const newProduct = {
@@ -30,6 +33,12 @@ function App() {
       return [newProduct, ...prevCart];
     });
   }
+  
+  //   useEffect 
+  useEffect(() => {
+   localStorage.setItem('cart',JSON.stringify(cart))
+  }, [cart]);
+
 
   //    Remove From Cart 
 
