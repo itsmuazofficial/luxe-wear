@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 export default function FeaturedProducts(props) {
-  // const [sortOrder, setSortOrder] = useState("default");
   const products = [
     {
       name: "T-shirt",
