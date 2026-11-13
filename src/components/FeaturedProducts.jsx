@@ -40,7 +40,7 @@ export default function FeaturedProducts(props) {
     },
   ];
    const filterProducts = products.filter((product) => {
-   return  product.name.toLowerCase().includes(props.searchTerm||"".toLowerCase())
+   return  product.name.toLowerCase().includes((props.searchTerm||"").toLowerCase())
    })
    let sortProducts = [...filterProducts]
   if(props.sortOrder=== "low"){
