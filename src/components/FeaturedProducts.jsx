@@ -1,6 +1,7 @@
 import React from "react";
-
+import { useState } from "react";
 export default function FeaturedProducts(props) {
+  // const [sortOrder, setSortOrder] = useState("default");
   const products = [
     {
       name: "T-shirt",
@@ -39,9 +40,21 @@ export default function FeaturedProducts(props) {
       badge : "PREMIUM"
     },
   ];
-    const filterProducts = products.filter((product) => {
+   const filterProducts = products.filter((product) => {
    return  product.name.toLowerCase().includes(props.searchTerm||"".toLowerCase())
+   })
+   let sortProducts = [...filterProducts]
+  if(props.sortOrder=== "low"){
+   sortProducts.sort((a,b) => {
+    return a.price - b.price
   })
+  }
+   if(props.sortOrder=== "high"){
+   sortProducts.sort((a,b) => {
+    return b.price - a.price
+  })
+  }
+  
   return (
     <div className="max-w-7xl mx-auto px-6 py-16">
       <h2 className="text-3xl font-bold text-gray-900 text-center">
@@ -51,7 +64,7 @@ export default function FeaturedProducts(props) {
         Explore our latest collection of premium fashion
       </p>
       <div className=" grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
-        {filterProducts.map((product, index) => {
+        {sortProducts.map((product, index) => {
           return (
             <div key={index}>
               <div className="bg-white rounded-xl shadow-md overflow-hidden  hover:shadow-lg transition-all">
@@ -63,7 +76,6 @@ export default function FeaturedProducts(props) {
                     className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
                     src={product.img}
                   />
-                 
                 </div>
                 <div className="p-4 ">
                   <h3 className="text-center font-semibold text-lg tracking-wide">
